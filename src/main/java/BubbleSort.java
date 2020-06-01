@@ -8,7 +8,7 @@ public class BubbleSort implements ISorter {
      * object of type ISortStats that contains the statistics relevant to the
      * sorting.
      *
-     * @param a
+     * @param a list to be sorted
      * @return ISortStats
      * @author Noam Arie
      */
@@ -17,11 +17,10 @@ public class BubbleSort implements ISorter {
         long startTime = System.nanoTime();
         int numComparisons = 0;
         int numMoves = 0;
-
         while (!Check.isInOrder(a)) {
             for (int i = 0; i < a.length - 1; i++) {
-
                 numComparisons++;
+                //compares two adjacent values
                 if (a[i] > a[i + 1]) {
                     numMoves++;
                     int temp = a[i];

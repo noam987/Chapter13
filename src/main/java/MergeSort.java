@@ -12,7 +12,7 @@ public class MergeSort implements ISorter {
      * object of type ISortStats that contains the statistics relevant to the
      * sorting.
      *
-     * @param a
+     * @param a list to be sorted
      * @return ISortStats
      * @author Noam Arie
      */
@@ -29,6 +29,12 @@ public class MergeSort implements ISorter {
 
     }
 
+    /**
+     * The recursive implementation used by the sort method.
+     *
+     * @param a the array to be sorted
+     * @author Noam Arie
+     */
     private void sorting(int[] a) {
         if (a.length > 1) {
             numMoves += 2;
@@ -43,10 +49,18 @@ public class MergeSort implements ISorter {
 
     }
 
+    /**
+     * Combines 2 sorted arrays into one sorted array.
+     *
+     * @param b     where to put the merged list
+     * @param left  the first sorted list to  merge
+     * @param right the second sorted list to merge
+     */
     private void merge(int[] b, int[] left, int[] right) {
         int leftIndex = 0;
         int rightIndex = 0;
         if (b.length > 1) {
+            // loops through the length of b to place the lowest remaining value.
             for (int i = 0; i < b.length; i++) {
                 if (leftIndex < left.length && rightIndex < right.length) {
                     if (left[leftIndex] < right[rightIndex]) {
@@ -56,14 +70,16 @@ public class MergeSort implements ISorter {
                         b[i] = right[rightIndex];
                         rightIndex++;
                     }
-
-
                 } else if (leftIndex == left.length && rightIndex == right.length) {
                     return;
-                } else if (leftIndex == left.length) {
+                }
+                //if there are no more remaining values in the left side, place from the right.
+                else if (leftIndex == left.length) {
                     b[i] = right[rightIndex];
                     rightIndex++;
-                } else if (rightIndex == right.length) {
+                }
+                //if there are no more remaining values in the left side, place from the right.
+                else if (rightIndex == right.length) {
                     b[i] = left[leftIndex];
                     leftIndex++;
                 }

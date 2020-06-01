@@ -7,7 +7,7 @@ public class InsertionSort implements ISorter {
      * object of type ISortStats that contains the statistics relevant to the
      * sorting.
      *
-     * @param a
+     * @param a list to be sorted
      * @return ISortStats
      * @author Noam Arie
      */
@@ -16,12 +16,13 @@ public class InsertionSort implements ISorter {
         long startTime = System.nanoTime();
         int numComparisons = 0;
         int numMoves = 0;
-
+        //loops through each value.
         for (int i = 0; i < a.length; i++) {
             boolean foundSpot = false;
             int j = 0;
             while (!foundSpot) {
                 numComparisons++;
+                //finds the correct spot for that value relative to the numbers before it
                 if (a[i] <= a[j]) {
                     foundSpot = true;
                     int temp = a[i];
